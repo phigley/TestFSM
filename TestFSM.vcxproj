@@ -101,12 +101,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="testfsm\elevator.cpp" />
+    <ClCompile Include="testfsm\simple_elevator.cpp" />
     <ClCompile Include="testfsm\main.cpp" />
     <ClCompile Include="testfsm\passenger.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="testfsm\elevator.hpp" />
+    <ClInclude Include="testfsm\simple_elevator.hpp" />
     <ClInclude Include="testfsm\passenger.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

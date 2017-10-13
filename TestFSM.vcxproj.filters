@@ -15,21 +15,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="testfsm\elevator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="testfsm\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="testfsm\passenger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="testfsm\simple_elevator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="testfsm\elevator.hpp">
+    <ClInclude Include="testfsm\passenger.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="testfsm\passenger.hpp">
+    <ClInclude Include="testfsm\simple_elevator.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

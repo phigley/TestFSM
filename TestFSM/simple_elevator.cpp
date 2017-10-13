@@ -6,12 +6,14 @@
 //  Copyright © 2017 Peter Higley. All rights reserved.
 //
 
-#include "elevator.hpp"
+#include "simple_elevator.hpp"
 #include "passenger.hpp"
 
 #include <iostream>
 #include <algorithm>
 #include <cassert>
+
+using namespace Simple;
 
 namespace {
     
@@ -256,7 +258,7 @@ const char* Elevator::describeState(State state) {
     return g_szState[ std::size_t( state ) ];
 }
 
-std::ostream& operator<<(std::ostream& out, const Elevator& elevator) {
+std::ostream& Simple::operator<<(std::ostream& out, const Elevator& elevator) {
     
     out << "Floor = "
     << elevator.currentFloor
