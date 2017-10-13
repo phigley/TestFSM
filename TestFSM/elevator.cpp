@@ -10,6 +10,7 @@
 #include "passenger.hpp"
 
 #include <iostream>
+#include <algorithm>
 #include <cassert>
 
 namespace {
