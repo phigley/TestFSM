@@ -34,8 +34,6 @@ namespace Simple
 			MaxStates
 		};
 
-		static const char* describeState(State state);
-
 		using PassengerList = std::vector< Passenger* >;
 
 	public:

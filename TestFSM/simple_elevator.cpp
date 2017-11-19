@@ -17,6 +17,23 @@ using namespace Simple;
 
 namespace {
     
+	constexpr const char* describeState(Elevator::State state) {
+		switch (state)
+		{
+		case Simple::Elevator::State::Up:
+			return "Up";
+		case Simple::Elevator::State::Down:
+			return "Down";
+		case Simple::Elevator::State::Idle:
+			return "Idle";
+		case Simple::Elevator::State::Loading:
+			return "Loading";
+		case Simple::Elevator::State::MaxStates:
+			return "Invalid";
+		}
+		return "Unknown";
+	}
+
     Elevator::Direction calcDirection(int currentFloor, int desiredFloor) {
         if( currentFloor < desiredFloor ) {
             return Elevator::Direction::Up;
@@ -88,7 +105,7 @@ void Elevator::step() {
             
         case State::Loading :
         {
-            Direction headingDirection = calcDirection(currentFloor, desiredFloor);
+            const Direction headingDirection = calcDirection(currentFloor, desiredFloor);
 
             for( auto* passengerPtr : passengers ) {
                 if( passengerPtr->getOnElevator() ) {
@@ -142,7 +159,7 @@ void Elevator::step() {
                 int bestDownDesired = currentFloor;
                 
                 // Look for any passengers on the current floor that wish to go to a new direction.
-                for( auto* passengerPtr : passengers ) {
+                for( const auto* passengerPtr : passengers ) {
                     
                     // There should be no one on the elevator at this point.
                     assert(!passengerPtr->getOnElevator());
@@ -244,31 +261,17 @@ bool Elevator::allPassengersAtDesiredFloor() const {
     
 }
 
-const char* Elevator::describeState(State state) {
-    
-    const char* g_szState[] = {
-        "Up",
-        "Down",
-        "Idle",
-        "Loading"
-    };
-    
-    static_assert( sizeof(g_szState) == std::size_t(State::MaxStates)*sizeof(g_szState[0]) , "Missing state description");
-    
-    return g_szState[ std::size_t( state ) ];
-}
-
 std::ostream& Simple::operator<<(std::ostream& out, const Elevator& elevator) {
     
     out << "Floor = "
     << elevator.currentFloor
     << " State = "
-    << Elevator::describeState(elevator.currentState)
+    << describeState(elevator.currentState)
     << " desired = "
     << elevator.desiredFloor
     << " : " << std::endl;
     
-    for( auto passengerPtr : elevator.passengers )
+    for( const auto* passengerPtr : elevator.passengers )
     {
         std::cout << "\t" << *passengerPtr << std::endl;
     }
